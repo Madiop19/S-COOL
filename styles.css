@@ -142,6 +142,46 @@
   .cart-foot{padding:18px 22px 24px; border-top:1px solid var(--line);}
   .cart-total-row{display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; font-size:14.5px; color:var(--ink-soft);}
   .cart-total-row .price{font-size:20px;}
+
+  /* COMING SOON (Resources / Blog) */
+  .coming-soon{
+    max-width:520px; margin:0 auto; text-align:center; background:var(--beige);
+    border-radius:var(--radius-lg); padding:48px 32px; border:1px dashed var(--line);
+  }
+  .coming-soon-icon{
+    width:56px; height:56px; border-radius:16px; background:var(--yellow-soft);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 18px;
+  }
+  .coming-soon h3{font-size:19px; margin-bottom:10px;}
+  .coming-soon p{font-size:14px; color:var(--ink-soft); line-height:1.6;}
+  .coming-soon p a{color:var(--blue); font-weight:600;}
+
+  /* SHOP PAGE: search + tabs + empty state */
+  .shop-search{
+    display:flex; align-items:center; gap:10px; background:var(--white); border:1.5px solid var(--line);
+    border-radius:100px; padding:6px 6px 6px 20px; max-width:520px; margin:0 auto 28px;
+  }
+  .shop-search svg{flex-shrink:0; color:var(--ink-soft);}
+  .shop-search input{
+    flex:1; border:none; outline:none; background:none; font-family:'Inter',sans-serif; font-size:14.5px; padding:10px 0;
+  }
+  .shop-search button{
+    background:var(--blue); color:#fff; border:none; border-radius:100px; padding:10px 20px;
+    font-size:13.5px; font-weight:600; cursor:pointer; flex-shrink:0;
+  }
+  .shop-tabs{display:flex; justify-content:center; gap:8px; margin-bottom:40px; flex-wrap:wrap;}
+  .shop-tab{
+    font-size:13.5px; padding:9px 18px; border-radius:100px; border:1.5px solid var(--line); background:var(--white);
+    cursor:pointer; color:var(--ink-soft); transition:all .2s ease; user-select:none; font-weight:500;
+  }
+  .shop-tab:hover{border-color:var(--blue-light);}
+  .shop-tab.active{background:var(--blue); color:#fff; border-color:var(--blue);}
+  .shop-empty{
+    max-width:440px; margin:20px auto 0; text-align:center; background:var(--white);
+    border-radius:var(--radius-lg); padding:44px 30px; border:1px dashed var(--line);
+  }
+  .shop-empty h3{font-size:17px; margin-bottom:10px;}
+  .shop-empty p{font-size:13.5px; color:var(--ink-soft); line-height:1.6; margin-bottom:20px;}
   @media (max-width:880px){
     .nav-links{display:none;}
     .nav-cta{display:none;}
