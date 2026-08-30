@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://MADIOP-19.github.io/S-COOL/sitemap.xml
