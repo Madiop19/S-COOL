@@ -21,22 +21,22 @@ const ARTICLE_ICON = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none
    Pour MODIFIER un pack : change juste la valeur voulue (price, desc, items). */
 const PACKS = [
   {
-    id:"pack-simple", name:"Simple", price:4900, accent:"#8FE9B4", badge:null,
+    id:"pack-simple", name:"Simple", price:4900, accent:"#8FE9B4", badge:null, brands:["BIC", "MAPED", "FUTURA"],
     desc:"L'essentiel bien choisi, pour démarrer l'année sans se ruiner.",
     items:["3 stylos rouges (BIC Cristal)","4 stylos bleus (BIC Cristal)","2 stylos noirs (BIC Cristal)","2 stylos verts (BIC Cristal)","1 crayon noir avec gomme","1 crayon noir sans gomme","2 gommes (MAPED petit modèle)","1 taille-crayon","1 kit de traçage (MAPED petit modèle)","1 compas avec crayon (FUTURA)","1 règle incassable (MAPED Twist'n Flex)","1 correcteur liquide","1 paquet de crayons de couleur (MAPED Mini Color'Peps)"]
   },
   {
-    id:"pack-extra", name:"Extra", price:15900, accent:"#EEF17A", badge:null,
+    id:"pack-extra", name:"Extra", price:15900, accent:"#EEF17A", badge:null, brands:["BIC", "MAPED"],
     desc:"Le pack le plus complet pour couvrir toute l'année sans y repenser.",
     items:["3 stylos rouges","4 stylos bleus","2 stylos noirs","2 stylos verts","1 stylo 4 couleurs (BIC)","2 crayons noirs avec gomme","2 crayons noirs sans gomme (MAPED Hb2)","2 gommes (MAPED grand + petit modèle)","1 taille-crayon","1 kit de traçage (MAPED Twist'n Flex, grand modèle)","1 compas avec crayon (MAPED Study)","1 règle 20cm flexible (MAPED Twist'n Flex)","2 correcteurs liquides","1 paquet de crayons de couleur (MAPED Color'Peps grand modèle)","1 scotch","1 tube de colle","1 critérium + recharge","1 paquet de surligneurs (pack de 4)"]
   },
   {
-    id:"pack-etudiant", name:"Étudiant", price:16900, accent:"#B7D9E8", badge:"New",
+    id:"pack-etudiant", name:"Étudiant", price:16900, accent:"#B7D9E8", badge:"New", brands:["SCHNEIDER", "MAPED", "LINC", "Exacompta"],
     desc:"Pensé pour le collège/lycée : de quoi écrire, classer et t'organiser.",
     items:["3 stylos rouges","4 stylos bleus","2 stylos noirs","1 stylo 4 couleurs (SCHNEIDER)","3 crayons noirs (MAPED Hb2)","2 gommes","1 taille-crayon","1 kit de traçage (MAPED, grand modèle)","1 règle incassable","2 correcteurs liquides","1 critérium + 2 recharges","1 paquet de surligneurs (MAPED couleur pastel)","1 agrafeuse + recharge (MAPED)","1 paquet de 12 stylos de couleur (LINC)","1 porte-vue 100 vues ou trieur (Exacompta)","1 cahier A4 200 pages 🎁"]
   },
   {
-    id:"pack-ultime", name:"Ultime", price:19900, accent:"#F4938C", badge:null,
+    id:"pack-ultime", name:"Ultime", price:19900, accent:"#F4938C", badge:null, brands:["BIC", "MAPED", "MILAN", "UHU", "LINC"],
     desc:"Le pack complet, sans rien à racheter en cours d'année.",
     items:["3 stylos rouges","4 stylos bleus","2 stylos noirs","2 stylos verts","1 stylo 4 couleurs","2 crayons noirs avec gomme","2 crayons noirs sans gomme","2 gommes","1 taille-crayon","1 kit de traçage (MAPED, grand modèle)","1 compas avec crayon (MAPED)","1 règle 20cm flexible (MAPED Twist'n Flex)","1 correcteur liquide","1 souris blanco (MILAN)","1 paquet de crayons de couleur (MAPED Color'Peps grand modèle)","2 scotchs","1 tube de colle (UHU grand modèle)","1 critérium + recharge","1 paquet de surligneurs (MAPED couleur pastel)","1 agrafeuse + recharge (MAPED)","1 paire de ciseaux (MAPED)","1 paquet de 12 stylos de couleur (LINC Pentonic)"]
   }
@@ -68,6 +68,7 @@ function packCard(pack){
     <h3>${pack.name}</h3>
     <p class="pack-desc">${pack.desc}</p>
     <div class="pack-price">${priceStr(pack.price)}</div>
+    ${pack.brands ? `<div class="pack-brands">${pack.brands.map(b=>`<span>${b}</span>`).join('')}</div>` : ''}
     <button class="pack-toggle" onclick="togglePack('${pack.id}')">
       <span id="toggleLabel-${pack.id}">Voir le contenu (${pack.items.length} articles)</span>
       <svg id="toggleIcon-${pack.id}" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
