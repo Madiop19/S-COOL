@@ -78,7 +78,8 @@
   nav{
     display:flex; align-items:center; justify-content:space-between;
     width:min(1160px, calc(100% - 32px));
-    padding:8px 12px 8px 18px;
+     padding:0 12px 18px;  min-height: 62px; /* au lieu de 8px 12px 8px 18px */
+  align-items:center;
     background:rgba(251,247,239,0.88);
     backdrop-filter:blur(18px) saturate(160%);
     -webkit-backdrop-filter:blur(18px) saturate(160%);
@@ -88,7 +89,7 @@
     transition:box-shadow .3s ease;
   }
   .logo{display:inline-flex; align-items:center; text-decoration:none;}
-  .logo-img{height:36px; width:auto; max-width:140px; object-fit:contain; display:block; transition:transform .25s ease;}
+  .logo-img{height: 200px; width:auto; max-width:140px; object-fit:contain; display:block; transition:transform .25s ease;}
   .logo:hover .logo-img{transform:scale(1.05);}
   .logo-footer{display:inline-block; margin-bottom:14px;}
   .logo-img-footer{height:40px; width:auto; max-width:155px; object-fit:contain; display:block; transition:transform .25s ease;}
