@@ -585,3 +585,44 @@
     transform:translateY(20px); opacity:0; pointer-events:none; transition:all .35s cubic-bezier(.4,0,.2,1); z-index:200;
   }
   .toast.show{transform:translateY(0); opacity:1;}
+
+  /* ---- ARTICLE CARDS (produits à l'unité) ---- */
+  .article-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  @media (max-width:980px){.article-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:640px){.article-grid{grid-template-columns:repeat(2,1fr); gap:12px;}}
+
+  .article-card-new{
+    background:var(--white); border-radius:var(--radius-md); overflow:hidden;
+    border:1px solid var(--line); display:flex; flex-direction:column;
+    transition:transform .3s cubic-bezier(.4,0,.2,1), box-shadow .3s ease;
+  }
+  .article-card-new:hover{transform:translateY(-4px); box-shadow:var(--shadow-soft);}
+  .article-img-wrap{
+    width:100%; aspect-ratio:1/0.85; background:var(--beige);
+    overflow:hidden; display:flex; align-items:center; justify-content:center;
+  }
+  .article-body-new{padding:12px 14px 16px; display:flex; flex-direction:column; flex:1; gap:0;}
+  .article-brand{
+    font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:600;
+    letter-spacing:0.08em; color:var(--blue-light); text-transform:uppercase;
+  }
+  .article-cat{
+    font-size:10px; color:var(--ink-soft); background:var(--blue-pale);
+    border-radius:100px; padding:2px 7px; font-family:'IBM Plex Mono',monospace;
+  }
+  .article-title-new{
+    font-family:'League Spartan',sans-serif; font-size:14px; font-weight:700;
+    color:var(--ink); margin:6px 0 4px; line-height:1.2;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .article-desc-new{
+    font-size:11.5px; color:var(--ink-soft); line-height:1.45;
+    margin-bottom:10px; flex:1;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .article-price-new{
+    font-family:'League Spartan',sans-serif; font-weight:700;
+    font-size:16px; color:var(--blue); margin-bottom:10px;
+  }

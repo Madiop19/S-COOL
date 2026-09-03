@@ -34,8 +34,10 @@ function renderShop(){
       : `Bonjour S'Cool, avez-vous d'autres produits que ceux du site ?`);
     document.getElementById('shopEmptyBtn').href = `https://wa.me/221762098743?text=${waMsg}`;
   } else {
-    grid.style.display = 'grid';
     empty.style.display = 'none';
+    const articlesOnly = items.every(i => i._type === 'article');
+    grid.className = articlesOnly ? 'article-grid' : 'pack-grid';
+    grid.style.display = 'grid';
     grid.innerHTML = items.map(i => i._type === 'pack' ? packCard(i) : articleCard(i)).join('');
   }
   observeReveals();
