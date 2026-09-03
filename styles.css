@@ -207,7 +207,7 @@
   .mobile-menu a:hover{background:var(--beige);}
   .mobile-menu .mm-cta{background:var(--blue); color:#fff; text-align:center; margin-top:6px; font-weight:700;}
 
-  .hero{padding-top:160px; padding-bottom:60px; position:relative; overflow:hidden;}
+  .hero{padding: top 90px; padding-bottom:60px; position:relative; overflow:hidden;}
   .hero::before{
     content:''; position:absolute; top:-120px; right:-160px; width:560px; height:560px;
     background:radial-gradient(circle, var(--yellow-soft) 0%, transparent 70%);
