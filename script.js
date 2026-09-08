@@ -43,7 +43,13 @@ function toggleFaq(i){ document.getElementById('faq-'+i).classList.toggle('open'
 /* ---------- INTERACTIONS ---------- */
 function submitContact(e){
   e.preventDefault();
-  showToast('Message envoyé ! On revient vers vous très vite.');
+  const nom = document.getElementById('cf-nom').value.trim();
+  const sujet = document.getElementById('cf-sujet').value;
+  const message = document.getElementById('cf-message').value.trim();
+  const text = encodeURIComponent(
+    `Bonjour S'Cool,\n\nNom : ${nom}\nSujet : ${sujet}\n\nMessage :\n${message}`
+  );
+  window.open(`https://wa.me/221762098743?text=${text}`, '_blank');
   e.target.reset();
   return false;
 }

@@ -79,9 +79,9 @@
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 4h2l1.6 9.6a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.6L20 8H7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.3" fill="currentColor"/><circle cx="17" cy="20" r="1.3" fill="currentColor"/></svg>
         Parcourir les Packs
       </a>
-      <a href="https://wa.me/221762098743" target="_blank" class="btn btn-whatsapp">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-3.6-6.7L20 4l-1 3.6A7.96 7.96 0 0 1 20 12Z" stroke="#fff" stroke-width="1.8"/></svg>
-        Commander sur WhatsApp
+      <a href="#devis" class="btn btn-secondary">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.7"/><path d="M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Devis gratuit
       </a>
     </div>
 
@@ -324,26 +324,26 @@
       <form class="contact-form reveal" onsubmit="return submitContact(event)">
         <div class="field">
           <label style="color:#F6B90A;">Nom complet</label>
-          <input type="text" placeholder="Votre nom" required>
-        </div>
-        <div class="field">
-          <label style="color:#F6B90A;">Email</label>
-          <input type="email" placeholder="vous@email.com" required>
+          <input id="cf-nom" type="text" placeholder="Votre nom" required>
         </div>
         <div class="field">
           <label style="color:#F6B90A;">Sujet</label>
-          <select>
+          <select id="cf-sujet">
             <option>Question sur une commande</option>
             <option>Partenariat école / entreprise</option>
-            <option>Suggestion de contenu</option>
+            <option>Demande de devis</option>
+            <option>Suggestion</option>
             <option>Autre</option>
           </select>
         </div>
         <div class="field">
           <label style="color:#F6B90A;">Message</label>
-          <textarea placeholder="Écrivez votre message ici..." required></textarea>
+          <textarea id="cf-message" placeholder="Écrivez votre message ici..." required></textarea>
         </div>
-        <button type="submit" class="btn btn-yellow btn-block">Envoyer le message</button>
+        <button type="submit" class="btn btn-yellow btn-block">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-3.6-6.7L20 4l-1 3.6A7.96 7.96 0 0 1 20 12Z" stroke="#1B3624" stroke-width="1.7"/></svg>
+          Envoyer sur WhatsApp
+        </button>
       </form>
       <div class="contact-side reveal">
         <a href="https://wa.me/221762098743" target="_blank" class="contact-tile" style="background:#1F3A22; border-color:#1F3A22;">
