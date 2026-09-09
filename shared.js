@@ -182,7 +182,33 @@ function articleCard(article){
 }
 
 /* ---------- UTILITAIRES PARTAGÉS (nav, toast, scroll-reveal) ---------- */
-function closeMenu(){ document.getElementById('mmenu').classList.remove('open'); }
+function closeMenu(){
+  const m = document.getElementById('mmenu');
+  m.classList.remove('open');
+  document.body.classList.remove('menu-open');
+}
+function openMenu(){
+  const m = document.getElementById('mmenu');
+  m.classList.toggle('open');
+  document.body.classList.toggle('menu-open', m.classList.contains('open'));
+}
+
+// Fermeture burger au clic extérieur
+document.addEventListener('click', function(e){
+  const menu = document.getElementById('mmenu');
+  const burger = document.querySelector('.burger');
+  if(menu && menu.classList.contains('open')){
+    if(!menu.contains(e.target) && !burger.contains(e.target)){
+      closeMenu();
+    }
+  }
+});
+
+// Fermeture panier au clic sur l'overlay
+document.addEventListener('DOMContentLoaded', function(){
+  const overlay = document.getElementById('cartOverlay');
+  if(overlay) overlay.addEventListener('click', closeCart);
+});
 function showToast(msg){
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');

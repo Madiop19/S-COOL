@@ -3,7 +3,7 @@
    Suppose que shared.js et cart.js sont chargés AVANT ce fichier.
    ========================================================================== */
 
-let activeCat = 'Tous';
+let activeCat = 'Articles';
 
 function renderShop(){
   const query = document.getElementById('shopSearch').value.trim().toLowerCase();

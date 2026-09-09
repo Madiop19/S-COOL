@@ -5,8 +5,7 @@
 
 const TESTIMONIALS = [
   {name:"Aïssatou D.", role:"Élève en Terminale, Dakar", quote:"Les fiches sur la gestion du temps m'ont vraiment aidée à tenir pendant le Bac blanc. Et le sac tient encore nickel après un an.", color:"#16305B"},
-  {name:"Moussa K.", role:"Parent d'élève, Thiès", quote:"Commander sur WhatsApp c'était super simple, livré en 2 jours. La qualité des cahiers est clairement au-dessus de la moyenne.", color:"#2E4E85"},
-  {name:"Fatou S.", role:"Étudiante, EPT", quote:"Le contenu Instagram de S'Cool m'a fait découvrir la méthode Pomodoro. Depuis je révise deux fois plus efficacement.", color:"#F6B90A"}
+  {name:"Moussa K.", role:"Parent d'élève, Thiès", quote:"Commander sur WhatsApp c'était super simple, livré en 2 jours. La qualité des cahiers est clairement au-dessus de la moyenne.", color:"#2E4E85"}
 ];
 
 const FAQS = [
