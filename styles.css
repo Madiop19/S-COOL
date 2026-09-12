@@ -642,3 +642,20 @@
     font-family:'League Spartan',sans-serif; font-weight:700;
     font-size:16px; color:var(--blue); flex-shrink:0;
   }
+
+  /* Pastilles de couleur */
+  .article-colors{display:flex; gap:6px; margin-bottom:10px;}
+  .color-dot{
+    width:20px; height:20px; border-radius:50%; border:2px solid var(--white);
+    box-shadow:0 0 0 1px var(--line); cursor:pointer; padding:0;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .color-dot:hover{transform:scale(1.15);}
+  .color-dot.active{box-shadow:0 0 0 2px var(--blue); transform:scale(1.1);}
+
+  /* Placeholder quand pas d'image */
+  .article-noimg{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:6px; color:var(--ink-soft); opacity:0.5; height:100%;
+  }
+  .article-noimg span{font-size:11px; font-family:'IBM Plex Mono',monospace;}

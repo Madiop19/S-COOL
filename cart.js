@@ -28,15 +28,26 @@ function saveCart(){
 // État du panier : { id_produit: { qty, trousse } }
 let cart = loadCart();
 
-function addToCart(id){
+function addToCart(id, hasColors){
+  let cartKey = id;
+  let colorName = '';
+  if(hasColors){
+    const item = findItem(id);
+    const idx = (typeof selectedColors !== 'undefined' && selectedColors[id] != null) ? selectedColors[id] : 0;
+    if(item && item.colors && item.colors[idx]){
+      colorName = item.colors[idx].name;
+      cartKey = id + '::' + colorName;
+    }
+  }
   const trousseEl = document.getElementById('trousse-'+id);
   const wantsTrousse = !!(trousseEl && trousseEl.checked);
-  if(cart[id]) cart[id].qty += 1;
-  else cart[id] = { qty: 1, trousse: wantsTrousse };
+  if(cart[cartKey]) cart[cartKey].qty += 1;
+  else cart[cartKey] = { qty: 1, trousse: wantsTrousse, color: colorName };
   saveCart();
   renderCart();
   const item = findItem(id);
-  showToast((item ? item.name : 'Article') + ' ajouté au panier');
+  const label = (item ? item.name : 'Article') + (colorName ? ' ('+colorName+')' : '');
+  showToast(label + ' ajouté au panier');
 }
 function changeQty(id, delta){
   cart[id].qty += delta;
@@ -77,7 +88,7 @@ function renderCart(){
       return `<div class="cart-item">
         <div class="ci-icon" style="color:${p.accent || 'var(--blue)'};">${PACKS.includes(p) ? PACK_ICON : ARTICLE_ICON}</div>
         <div class="ci-info">
-          <h6>${p.name}${item.trousse ? ' <span class="mono" style="font-size:11px; color:var(--ink-soft);">+ trousse</span>' : ''}</h6>
+          <h6>${p.name}${item.color ? ' <span class="mono" style="font-size:11px; color:var(--ink-soft);">· '+item.color+'</span>' : ''}${item.trousse ? ' <span class="mono" style="font-size:11px; color:var(--ink-soft);">+ trousse</span>' : ''}</h6>
           <span class="mono">${priceStr(p.price)}</span>
           <div class="ci-qty">
             <button onclick="changeQty('${id}', -1)">−</button>
@@ -108,7 +119,7 @@ function checkoutCartWhatsapp(){
   let lines = ["Bonjour S'Cool, je souhaite commander :"];
   entries.forEach(([id, item])=>{
     const p = findItem(id);
-    lines.push(`- ${p.name} x${item.qty} (${priceStr(p.price * item.qty)})${item.trousse ? ' + trousse (prix à confirmer)' : ''}`);
+    lines.push(`- ${p.name}${item.color ? ' ('+item.color+')' : ''} x${item.qty} (${priceStr(p.price * item.qty)})${item.trousse ? ' + trousse (prix à confirmer)' : ''}`);
   });
   lines.push(`Total : ${priceStr(cartTotal())}`);
   const msg = encodeURIComponent(lines.join('\n'));

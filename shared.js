@@ -43,92 +43,54 @@ const PACKS = [
 ];
 
 /* ---------- ARTICLES VENDUS À L'UNITÉ ----------
-   Source : base Notion 📦 Stock (Articles) — mis à jour le 03/09/2026.
-   Prix : tous à 0 pour l'instant → affiche "Prix sur demande" + bouton WhatsApp.
-   Quand tu as les vrais prix : Ctrl+F → cherche "price:0" → remplace chaque 0.
-   Pour AJOUTER : copie un objet {...} entier, colle avant le ], change les valeurs.
-   Pour SUPPRIMER : supprime l'objet {...} et sa virgule. */
+   Source : base de stock réelle S'Cool — 35 produits.
+   Prix de vente arrondis à la valeur ronde supérieure.
+   Images : dossier images/produits/ (format .webp).
+   Certaines images manquent (p9, p31, p32, p35) → placeholder générique.
+   Pour MODIFIER un prix : change la valeur "price".
+   Pour AJOUTER une variante couleur : ajoute un tableau "colors:[...]". */
 const ARTICLES = [
-  /* — ÉCRITURE — */
-  {id:"stylos-rouges-bic", name:"Stylos rouges BIC Cristal", marque:"BIC", price:250,
-   image:"https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&q=80",
-   desc:"Stylos bille rouge BIC Cristal, pointe medium — vendus à l'unité."},
-  {id:"stylo-4-couleurs-schneider", name:"Stylo 4 couleurs Schneider", marque:"Schneider", price:1500,
-   image:"https://images.unsplash.com/photo-1585664811087-47f65abbad64?w=400&q=80",
-   desc:"Stylo bille rétractable 4 couleurs (bleu, noir, rouge, vert) — marque Schneider."},
-  {id:"stylo-schneider-normal", name:"Stylo bille Schneider", marque:"Schneider", price:350,
-   image:"https://images.unsplash.com/photo-1585664811087-47f65abbad64?w=400&q=80",
-   desc:"Stylo bille Schneider classique — écriture fluide et régulière."},
-  {id:"stylos-couleur-linc", name:"Paquet 12 stylos couleur LINC", marque:"LINC", price:3500,
-   image:"https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80",
-   desc:"Paquet de 12 stylos couleur LINC Pentonic — assortiment de couleurs vives."},
-  {id:"stylos-couleur-schneider-vizz", name:"Paquet 10 stylos Schneider VIZZ", marque:"Schneider", price:4500,
-   image:"https://images.unsplash.com/photo-1585664811087-47f65abbad64?w=400&q=80",
-   desc:"10 stylos bille de couleur Schneider VIZZ — pointe medium, couleurs assorties."},
-  {id:"crayons-noirs", name:"Crayons noirs HB2 (paquet de 12)", marque:"MAPED", price:2500,
-   image:"https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=400&q=80",
-   desc:"Paquet de 12 crayons noirs HB2 — mine résistante, idéal pour l'écriture et le dessin."},
-  {id:"crayons-noirs-gomme", name:"Crayons noirs avec gomme (paquet de 12)", marque:"MAPED", price:2800,
-   image:"https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?w=400&q=80",
-   desc:"Paquet de 12 crayons HB2 avec gomme intégrée — pratique pour corriger sans chercher."},
-  {id:"gomme-grand-modele", name:"Gomme blanche MAPED grand modèle", marque:"MAPED", price:400,
-   image:"https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&q=80",
-   desc:"Gomme blanche MAPED Technic grand modèle — efface sans déchirer le papier."},
-  {id:"gomme-petit-modele", name:"Gomme blanche MAPED petit modèle", marque:"MAPED", price:250,
-   image:"https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&q=80",
-   desc:"Gomme blanche MAPED Technic petit modèle — format compact pour la trousse."},
-  {id:"taille-crayon", name:"Taille-crayon MAPED", marque:"MAPED", price:300,
-   image:"https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80",
-   desc:"Taille-crayon simple trou — fiable et compact pour toute la trousse."},
-  {id:"surligneur-fluo", name:"Surligneur fluo MAPED", marque:"MAPED", price:600,
-   image:"https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80",
-   desc:"Surligneur Fluo Peps MAPED — couleurs vives, pointe biseautée, encre longue durée."},
-  {id:"surligneur-pastel", name:"Surligneur pastel MAPED", marque:"MAPED", price:700,
-   image:"https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80",
-   desc:"Surligneur Fluo Peps pastel MAPED — teintes douces qui ne fatiguent pas les yeux."},
-  {id:"blanco-liquide", name:"Blanco liquide", marque:"", price:500,
-   image:"https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&q=80",
-   desc:"Correcteur liquide blanc — sèche rapidement, pour corriger sans arracher le papier."},
-  {id:"blanco-souris", name:"Blanco souris MILAN", marque:"MILAN", price:800,
-   image:"https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&q=80",
-   desc:"Correcteur en ruban souris — pratique et propre, sans temps de séchage."},
-  /* — TRAÇAGE — */
-  {id:"compas-maped", name:"Compas MAPED Study", marque:"MAPED", price:2500,
-   image:"https://images.unsplash.com/photo-1608500218889-b3f31eba13af?w=400&q=80",
-   desc:"Compas MAPED Study avec crayon intégré — précis et robuste pour la géométrie."},
-  {id:"kit-tracage-maped", name:"Kit de traçage MAPED", marque:"MAPED", price:3500,
-   image:"https://images.unsplash.com/photo-1608500218889-b3f31eba13af?w=400&q=80",
-   desc:"Kit de géométrie MAPED complet : équerre, rapporteur et règle — tout pour la classe."},
-  {id:"regle-incassable", name:"Règle 20cm incassable MAPED", marque:"MAPED", price:500,
-   image:"https://images.unsplash.com/photo-1608500218889-b3f31eba13af?w=400&q=80",
-   desc:"Règle 20cm MAPED — transparente, graduée, incassable."},
-  {id:"regle-twist-flex", name:"Règle MAPED Twist'n Flex 20cm", marque:"MAPED", price:750,
-   image:"https://images.unsplash.com/photo-1608500218889-b3f31eba13af?w=400&q=80",
-   desc:"Règle flexible 20cm MAPED Twist'n Flex — incassable, disponible en plusieurs couleurs."},
-  {id:"crayons-couleur-grand", name:"Crayons de couleur MAPED grand modèle", marque:"MAPED", price:3500,
-   image:"https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80",
-   desc:"Paquet MAPED Color'Peps grand modèle — couleurs vives et mine résistante."},
-  {id:"crayons-couleur-petit", name:"Crayons de couleur MAPED petit modèle", marque:"MAPED", price:2200,
-   image:"https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=400&q=80",
-   desc:"Paquet MAPED Mini Color'Peps — format trousse, couleurs assorties."},
-  /* — PAPETERIE — */
-  {id:"baton-colle", name:"Bâton de colle", marque:"", price:400,
-   image:"https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80",
-   desc:"Bâton de colle — colle forte, sèche sans traces, idéal pour les travaux manuels."},
-  {id:"ciseaux-maped", name:"Paire de ciseaux MAPED", marque:"MAPED", price:1200,
-   image:"https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=400&q=80",
-   desc:"Ciseaux scolaires MAPED — lames inox, poignée ergonomique, bout arrondi sécurisé."},
-  /* — RANGEMENT — */
-  {id:"agrafeuse-maped", name:"Agrafeuse MAPED", marque:"MAPED", price:3500,
-   image:"https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80",
-   desc:"Agrafeuse compacte MAPED — agrafes 26/6, capacité 20 feuilles."},
-  {id:"recharge-agrafes", name:"Recharge d'agrafes MAPED", marque:"MAPED", price:800,
-   image:"https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80",
-   desc:"Recharge d'agrafes 26/6 compatible MAPED — boîte de 1000 agrafes."}
+  {id:"p1", name:"Crayons de couleur Color'Peps Strong x12 MAPED", cat:"Coloriage", price:1600, image:"images/produits/1.webp"},
+  {id:"p2", name:"Crayons de couleur Color'Peps Mini Strong x12 MAPED", cat:"Coloriage", price:800, image:"images/produits/2.webp"},
+  {id:"p3", name:"Crayon noir 2B MAPED", cat:"Écriture", price:200, image:"images/produits/3.webp"},
+  {id:"p4", name:"Agrafes 6mm x1000 RAPID", cat:"Papeterie", price:800, image:"images/produits/4.webp"},
+  {id:"p5", name:"Gomme blanche Technic 600 MAPED", cat:"Correction", price:300, image:"images/produits/5.webp"},
+  {id:"p6", name:"Gomme blanche Technic 300 MAPED", cat:"Correction", price:250, image:"images/produits/6.webp"},
+  {id:"p7", name:"Compas à crayon Study Neon MAPED", cat:"Traçage", price:1850, image:"images/produits/7.webp"},
+  {id:"p8", name:"Stylo 4 couleurs Take4 SCHNEIDER", cat:"Écriture", price:1450, image:"images/produits/8.webp"},
+  {id:"p9", name:"Stylo à bille Tops 505 F noir SCHNEIDER", cat:"Écriture", price:150, image:""},
+  {id:"p10", name:"Bâton de colle 21g Coloured MILAN", cat:"Papeterie", price:1000, image:"images/produits/10orange.webp", colors:[{name:"Orange",hex:"#E8853A",image:"images/produits/10orange.webp"},{name:"Rose",hex:"#E86A9A",image:"images/produits/10rose.webp"}]},
+  {id:"p11", name:"Surligneurs Classic assortis x4 MAPED", cat:"Écriture", price:2250, image:"images/produits/11.webp"},
+  {id:"p12", name:"Surligneurs Pastel assortis x4 MAPED", cat:"Écriture", price:2600, image:"images/produits/12.webp"},
+  {id:"p13", name:"Taille-crayon 1 trou Igloo Neon MAPED", cat:"Correction", price:450, image:"images/produits/13.webp"},
+  {id:"p14", name:"Ciseaux 13cm gaucher Pulse MAPED", cat:"Papeterie", price:600, image:"images/produits/14.webp"},
+  {id:"p15", name:"Ciseaux 13cm Security Smiling Planet MAPED", cat:"Papeterie", price:900, image:"images/produits/15.webp"},
+  {id:"p16", name:"Blanco souris 5mm x8m MILAN", cat:"Correction", price:1350, image:"images/produits/16.webp"},
+  {id:"p17", name:"Stylos Vizz M assortis x10 SCHNEIDER", cat:"Écriture", price:3500, image:"images/produits/17.webp"},
+  {id:"p18", name:"Crayon noir HB embout gomme Navy MAPED", cat:"Écriture", price:200, image:"images/produits/18.webp"},
+  {id:"p19", name:"Compas Study bague Flowpack MAPED", cat:"Traçage", price:800, image:"images/produits/19.webp"},
+  {id:"p20", name:"Kit de traçage Study 20cm 4pcs MAPED", cat:"Traçage", price:1350, image:"images/produits/20.webp"},
+  {id:"p21", name:"Agrafeuse Mini 24/6-26/6 Vivo MAPED", cat:"Papeterie", price:1350, image:"images/produits/21.webp"},
+  {id:"p22", name:"Règle 20cm Twist'n Flex Patterns MAPED", cat:"Traçage", price:1100, image:"images/produits/22.webp"},
+  {id:"p23", name:"Règle 20cm Study incassable Flow MAPED", cat:"Traçage", price:350, image:"images/produits/23.webp"},
+  {id:"p24", name:"Stylo à bille bleu BIC Cristal", cat:"Écriture", price:150, image:"images/produits/24.webp"},
+  {id:"p25", name:"Stylo à bille rouge BIC Cristal", cat:"Écriture", price:150, image:"images/produits/25.webp"},
+  {id:"p26", name:"Stylo à bille noir BIC Cristal", cat:"Écriture", price:150, image:"images/produits/26.webp"},
+  {id:"p27", name:"Stylo à bille vert BIC Cristal", cat:"Écriture", price:150, image:"images/produits/27.webp"},
+  {id:"p28", name:"Kit de traçage 15cm 4pcs MAPED", cat:"Traçage", price:700, image:"images/produits/28.webp"},
+  {id:"p29", name:"Correcteur liquide", cat:"Correction", price:250, image:"images/produits/29.webp"},
+  {id:"p30", name:"Scotch", cat:"Papeterie", price:350, image:"images/produits/30.webp"},
+  {id:"p31", name:"Critérium 0,7mm", cat:"Écriture", price:850, image:""},
+  {id:"p32", name:"Mines 0,7mm MAPED", cat:"Écriture", price:350, image:""},
+  {id:"p33", name:"Lot de 12 stylos gel multicolores LINC Pentonic", cat:"Écriture", price:2500, image:"images/produits/33.webp"},
+  {id:"p34", name:"Classeur 100 vues Exacompta", cat:"Rangement", price:3200, image:"images/produits/34.webp"},
+  {id:"p35", name:"Notebook A4", cat:"Rangement", price:2500, image:""}
 ];
 
 function findItem(id){
-  return PACKS.find(p => p.id === id) || ARTICLES.find(a => a.id === id);
+  // Les variantes couleur utilisent une clé composite "p10::Orange" → on retrouve le produit de base
+  const baseId = id.split('::')[0];
+  return PACKS.find(p => p.id === baseId) || ARTICLES.find(a => a.id === baseId);
 }
 
 function packCard(pack){
@@ -164,21 +126,51 @@ function togglePack(id){
 }
 
 function articleCard(article){
-  const imgHtml = article.image
-    ? `<img src="${article.image}" alt="${article.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">`
-    : ARTICLE_ICON;
-  return `<div class="article-card-new reveal">
+  const hasImg = article.image && article.image.length > 0;
+  const imgHtml = hasImg
+    ? `<img id="img-${article.id}" src="${article.image}" alt="${article.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">`
+    : `<div class="article-noimg">${ARTICLE_ICON}<span>Photo bientôt</span></div>`;
+
+  // Pastilles de couleur (si variantes)
+  let colorsHtml = '';
+  if(article.colors && article.colors.length){
+    colorsHtml = `<div class="article-colors">` + article.colors.map((c,i)=>
+      `<button class="color-dot${i===0?' active':''}" style="background:${c.hex}"
+        title="${c.name}" aria-label="${c.name}"
+        onclick="selectColor('${article.id}', ${i})"></button>`
+    ).join('') + `</div>`;
+  }
+
+  const addArg = (article.colors && article.colors.length)
+    ? `'${article.id}', true` : `'${article.id}'`;
+
+  return `<div class="article-card-new reveal" id="card-${article.id}">
     <div class="article-img-wrap">${imgHtml}</div>
     <div class="article-body-new">
-      ${article.marque ? `<span class="article-brand">${article.marque}</span>` : ''}
+      <span class="article-brand">${article.cat || ''}</span>
       <h4 class="article-title-new">${article.name}</h4>
-      <p class="article-desc-new">${article.desc}</p>
+      ${colorsHtml}
       <div class="article-footer-new">
         <span class="article-price-new">${priceStr(article.price)}</span>
-        <button class="btn btn-primary btn-sm" onclick="addToCart('${article.id}')">Ajouter</button>
+        <button class="btn btn-primary btn-sm" onclick="addToCart(${addArg})">Ajouter</button>
       </div>
     </div>
   </div>`;
+}
+
+// Sélection d'une couleur : change l'image + mémorise le choix
+const selectedColors = {};
+function selectColor(id, idx){
+  const item = findItem(id);
+  if(!item || !item.colors) return;
+  selectedColors[id] = idx;
+  const img = document.getElementById('img-'+id);
+  if(img && item.colors[idx].image) img.src = item.colors[idx].image;
+  const card = document.getElementById('card-'+id);
+  if(card){
+    card.querySelectorAll('.color-dot').forEach((d,i)=>
+      d.classList.toggle('active', i===idx));
+  }
 }
 
 /* ---------- UTILITAIRES PARTAGÉS (nav, toast, scroll-reveal) ---------- */
